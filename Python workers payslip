@@ -12,14 +12,14 @@ try:
         worker_details = {"ID": i, "Gender": gender, "Salary": salary}
         workers.append(worker_details)
 
-    # Generate payment slips for 
+    # Generate payment slips for the 400 workers 
     for worker in workers:
         print(f"Worker ID: {worker['ID']}")
         print(f"Gender: {worker['Gender']}")
         print(f"Salary: ${worker['Salary']}")
         
 
-        # Determine employee level based on salary and gender
+        # Determine employee level based on their salary and gender
         if 10000 < worker['Salary'] < 20000:
             print("Employee level: A1")
         elif 7500 < worker['Salary'] < 30000 and worker['Gender'] == "Female":
