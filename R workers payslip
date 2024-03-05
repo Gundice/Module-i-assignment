@@ -1,0 +1,33 @@
+# Load required library
+library(dplyr)
+
+# Create a function to generate random workers
+generate_workers <- function(num_workers) {
+  workers <- data.frame(ID = 1:num_workers,
+                        Gender = sample(c("Male", "Female"), num_workers, replace = TRUE),
+                        Salary = sample(5000:55000, num_workers, replace = TRUE))
+  return(workers)
+}
+
+tryCatch({
+  # Generate 400 workers
+  workers <- generate_workers(400)
+  
+  # Print payment slips and determine employee level
+  for (i in 1:nrow(workers)) {
+    cat("Worker ID:", workers$ID[i], "\n")
+    cat("Gender:", workers$Gender[i], "\n")
+    cat("Salary: $", workers$Salary[i], "\n")
+    
+    # Determine employee level based on salary and gender
+    if (workers$Salary[i] > 10000 & workers$Salary[i] < 20000) {
+      cat("Employee level: A1\n")
+    } else if (workers$Salary[i] > 7500 & workers$Salary[i] < 30000 & workers$Gender[i] == "Female") {
+      cat("Employee level: A5-F\n")
+    }
+    
+    cat("--------------------\n")
+  }
+}, error = function(e) {
+  cat("An error occurred:", e$message, "\n")
+})
