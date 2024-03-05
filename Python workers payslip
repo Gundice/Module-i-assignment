@@ -1,5 +1,6 @@
 #importation of random library 
-import random
+from random import randint
+from random import choice
 
 # List to store workers' details
 workers = []
@@ -7,8 +8,8 @@ workers = []
 try:
     # Generate 400 workers using the random library 
     for i in range(1, 401):
-        gender = random.choice(["Male", "Female"])
-        salary = random.randint(5000, 55000)
+        gender = choice(["Male", "Female"])
+        salary = randint(5000, 55000)
         worker_details = {"ID": i, "Gender": gender, "Salary": salary}
         workers.append(worker_details)
 
